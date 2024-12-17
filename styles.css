@@ -1,0 +1,119 @@
+.image-hover-preview {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	padding: 10px;
+}
+
+.hover-image {
+	max-width: 90vw;
+	max-height: 90vh;
+	object-fit: contain;
+	display: block;
+	margin: auto;
+}
+
+.image-hover-preview.visible {
+	opacity: 1;
+}
+
+.setting-item-control {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	position: relative;
+}
+
+.icon-picker-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px;
+	background-color: var(--background-modifier-form-field);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
+	margin-left: 8px;
+}
+
+.icon-picker-button:hover {
+	background-color: var(--background-modifier-form-field-highlighted);
+}
+
+.icon-picker-dropdown {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	z-index: 1000;
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	max-height: 400px;
+	margin-top: 4px;
+}
+
+.icon-search-input {
+	width: calc(100% - 16px);
+	margin: 8px;
+	padding: 6px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background-color: var(--background-modifier-form-field);
+}
+
+.icons-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+	gap: 8px;
+	padding: 8px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.icon-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+}
+
+.icon-wrapper:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.icon-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+}
+
+.current-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+}
+
+.vertical-tab-content {
+	max-height: 100vh;
+	overflow-y: auto;
+}

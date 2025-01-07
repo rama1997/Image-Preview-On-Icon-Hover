@@ -14,9 +14,9 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	display(): void {
 		this.containerEl.empty();
 
-		this.setupCoreButtonsSetting();
 		this.setupRibbonIconSetting();
 		this.setupStatusBarSetting();
+		this.setupCoreButtonsSetting();
 	}
 
 	private setupCoreButtonsSetting() {
@@ -173,7 +173,6 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 		const dropdownContainer = iconSetting.controlEl.createEl("div", {
 			cls: "icon-picker-dropdown",
 		});
-		dropdownContainer.style.display = "none";
 
 		// Add search input to dropdown
 		const searchInput = dropdownContainer.createEl("input", {
@@ -207,7 +206,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 				iconWrapper.addEventListener("click", async () => {
 					if (await updateIcon(iconConfig.id, iconId)) {
 						setIcon(currentIconContainer, iconId);
-						dropdownContainer.style.display = "none";
+						dropdownContainer.classList.remove("is-visible");
 						new Notice(`Icon updated successfully`);
 					}
 				});
@@ -223,20 +222,20 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 		// Toggle dropdown on button click
 		iconButton.addEventListener("click", (e) => {
 			e.stopPropagation();
-			const isVisible = dropdownContainer.style.display !== "none";
+			const isVisible = dropdownContainer.classList.contains("is-visible");
 			if (!isVisible) {
 				renderIcons();
-				dropdownContainer.style.display = "block";
+				dropdownContainer.classList.add("is-visible");
 				searchInput.focus();
 			} else {
-				dropdownContainer.style.display = "none";
+				dropdownContainer.classList.remove("is-visible");
 			}
 		});
 
 		// Close dropdown when clicking outside
 		document.addEventListener("click", (e) => {
 			if (!iconButton.contains(e.target as Node) && !dropdownContainer.contains(e.target as Node)) {
-				dropdownContainer.style.display = "none";
+				dropdownContainer.classList.remove("is-visible");
 			}
 		});
 	}

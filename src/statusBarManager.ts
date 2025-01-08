@@ -55,7 +55,7 @@ export class StatusBarManager {
 			statusBarItemEl.addEventListener("click", () => {
 				if (iconConfig.imagePath) {
 					const { vault } = this.app;
-					const imageFile = vault.getAbstractFileByPath(iconConfig.imagePath);
+					const imageFile = vault.getFileByPath(iconConfig.imagePath);
 
 					if (imageFile) {
 						// Open the image file

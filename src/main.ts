@@ -1,5 +1,4 @@
 import { Plugin } from "obsidian";
-import manifest from "../manifest.json";
 import { RibbonBarManager } from "./ribbonBarManager";
 import { StatusBarManager } from "./statusBarManager";
 import { CoreButtonsManager } from "./coreButtonsManager";
@@ -9,7 +8,7 @@ import { ImagePreviewOnIconHoverSettings } from "./types";
 
 export default class ImagePreviewOnIconHoverPlugin extends Plugin {
 	settings: ImagePreviewOnIconHoverSettings;
-	private pluginId = `${manifest.id}`;
+	private pluginId = this.manifest.id;
 	private ribbonBarManager: RibbonBarManager;
 	private statusBarManager: StatusBarManager;
 	private coreButtonsManager: CoreButtonsManager;

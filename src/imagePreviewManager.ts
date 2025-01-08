@@ -29,13 +29,11 @@ export class ImagePreviewManager {
 
 	showImage(imagePath: string): boolean {
 		if (!this.popupElement || !this.popupImage) {
-			console.log(this.popupElement);
-			console.log(this.popupImage);
 			return false;
 		}
 
 		const { vault } = this.app;
-		const imageFile = vault.getAbstractFileByPath(imagePath);
+		const imageFile = vault.getFileByPath(imagePath);
 
 		if (imageFile) {
 			// Get resource path for the image

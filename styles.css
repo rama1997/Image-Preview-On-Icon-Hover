@@ -25,13 +25,6 @@
 	opacity: 1;
 }
 
-.setting-item-control {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	position: relative;
-}
-
 .icon-picker-button {
 	display: flex;
 	align-items: center;
@@ -117,7 +110,9 @@
 	height: 16px;
 }
 
-.vertical-tab-content {
-	max-height: 100vh;
-	overflow-y: auto;
+.setting-item-control[data-image-preview-plugin] {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	position: relative;
 }

@@ -1,5 +1,6 @@
 import { App, Setting, setIcon, getIconIds, Notice, PluginSettingTab } from "obsidian";
 import ImagePreviewOnIconHoverPlugin from "./main";
+import { FileSuggester } from "./FileSuggester";
 
 export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	private plugin: ImagePreviewOnIconHoverPlugin;
@@ -30,74 +31,84 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	}
 
 	private setupLeftSidebarToggleSetting() {
-		const leftSidebarToggleSetting = new Setting(this.containerEl).setName("Left sidebar toggle icon").setDesc("Assign an image to display when hovering over the left sidebar toggle icon");
-
-		leftSidebarToggleSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(this.plugin.settings.CoreButtonsImage.leftSidebarToggleImagePath)
-				.onChange(async (value) => {
-					await this.plugin.updateLeftSidebarToggleImagePath(value);
-				}),
-		);
+		new Setting(this.containerEl)
+			.setName("Left sidebar toggle icon")
+			.setDesc("Assign an image to display when hovering over the left sidebar toggle icon")
+			.addSearch((text) => {
+				new FileSuggester(this.app, text.inputEl);
+				text
+					.setPlaceholder("images/example.png")
+					.setValue(this.plugin.settings.CoreButtonsImage.leftSidebarToggleImagePath)
+					.onChange(async (value) => {
+						await this.plugin.updateLeftSidebarToggleImagePath(value);
+					});
+			});
 	}
 
 	private setupRightSidebarToggleSetting() {
-		const rightSidebarToggleSetting = new Setting(this.containerEl).setName("Right sidebar toggle icon").setDesc("Assign an image to display when hovering over the righ sidebar toggle icon");
-
-		rightSidebarToggleSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(this.plugin.settings.CoreButtonsImage.rightSidebarToggleImagePath)
-				.onChange(async (value) => {
-					await this.plugin.updateRightSidebarToggleImagePath(value);
-				}),
-		);
+		new Setting(this.containerEl)
+			.setName("Right sidebar toggle icon")
+			.setDesc("Assign an image to display when hovering over the righ sidebar toggle icon")
+			.addSearch((text) => {
+				new FileSuggester(this.app, text.inputEl);
+				text
+					.setPlaceholder("images/example.png")
+					.setValue(this.plugin.settings.CoreButtonsImage.rightSidebarToggleImagePath)
+					.onChange(async (value) => {
+						await this.plugin.updateRightSidebarToggleImagePath(value);
+					});
+			});
 	}
 
 	private setupVaultSwitcherSetting() {
-		const vaultNameSetting = new Setting(this.containerEl).setName("Vault switcher").setDesc("Assign an image to display when hovering over the vault switcher");
-
-		vaultNameSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(this.plugin.settings.CoreButtonsImage.vaultSwitcherImagePath)
-				.onChange(async (value) => {
-					await this.plugin.updateVaultSwitcherImagePath(value);
-				}),
-		);
+		new Setting(this.containerEl)
+			.setName("Vault switcher")
+			.setDesc("Assign an image to display when hovering over the vault switcher")
+			.addSearch((text) => {
+				new FileSuggester(this.app, text.inputEl);
+				text
+					.setPlaceholder("images/example.png")
+					.setValue(this.plugin.settings.CoreButtonsImage.vaultSwitcherImagePath)
+					.onChange(async (value) => {
+						await this.plugin.updateVaultSwitcherImagePath(value);
+					});
+			});
 	}
 
 	private setupHelpIconSetting() {
-		const helpIconSetting = new Setting(this.containerEl).setName("Help icon").setDesc("Assign an image to display when hovering over the help icon");
-
-		helpIconSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(this.plugin.settings.CoreButtonsImage.helpIconImagePath)
-				.onChange(async (value) => {
-					await this.plugin.updateHelpIconImagePath(value);
-				}),
-		);
+		new Setting(this.containerEl)
+			.setName("Help icon")
+			.setDesc("Assign an image to display when hovering over the help icon")
+			.addSearch((text) => {
+				new FileSuggester(this.app, text.inputEl);
+				text
+					.setPlaceholder("images/example.png")
+					.setValue(this.plugin.settings.CoreButtonsImage.helpIconImagePath)
+					.onChange(async (value) => {
+						await this.plugin.updateHelpIconImagePath(value);
+					});
+			});
 	}
 
 	private setupSettingIconSetting() {
-		const settingIconSetting = new Setting(this.containerEl).setName("Setting icon").setDesc("Assign an image to display when hovering over the setting icon");
-
-		settingIconSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(this.plugin.settings.CoreButtonsImage.settingIconImagePath)
-				.onChange(async (value) => {
-					await this.plugin.updateSettingIconImagePath(value);
-				}),
-		);
+		new Setting(this.containerEl)
+			.setName("Setting icon")
+			.setDesc("Assign an image to display when hovering over the setting icon")
+			.addSearch((text) => {
+				new FileSuggester(this.app, text.inputEl);
+				text
+					.setPlaceholder("images/example.png")
+					.setValue(this.plugin.settings.CoreButtonsImage.settingIconImagePath)
+					.onChange(async (value) => {
+						await this.plugin.updateSettingIconImagePath(value);
+					});
+			});
 	}
 
 	private setupRibbonIconSetting() {
 		this.containerEl.createEl("h2", { text: "Ribbon bar icons" });
 
-		// Add "Add New Icon" button at the top
+		// Add button to add new Ribbon Bar icon
 		new Setting(this.containerEl).setName(`Add new ribbon bar icon`).addButton((button) => {
 			button.setButtonText("+").onClick(async () => {
 				await this.plugin.addNewRibbonIcon();
@@ -107,23 +118,39 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 
 		// Display settings for each icon
 		this.plugin.settings.RibbonBarIcons.forEach((iconConfig) => {
-			const iconSetting = new Setting(this.containerEl).setName(`Ribbon bar icon`).setDesc("Assign an image to display when hovering the ribbon icon");
-
-			// Add image path input
-			this.addImagePathInput(iconSetting, (id, imagePath) => this.plugin.updateRibbonIconImagePath(id, imagePath), iconConfig);
+			const iconSetting = new Setting(this.containerEl)
+				.setName(`Ribbon bar icon`)
+				.setDesc("Assign an image to display when hovering the ribbon icon")
+				.addSearch((text) => {
+					new FileSuggester(this.app, text.inputEl);
+					text
+						.setPlaceholder("images/example.png")
+						.setValue(iconConfig.imagePath)
+						.onChange(async (value) => {
+							await this.plugin.updateRibbonIconImagePath(iconConfig.id, value);
+						});
+				});
 
 			// Add icon picker button
 			this.createIconPicker(iconSetting, (id, iconId) => this.plugin.updateRibbonIcon(id, iconId), iconConfig, "ribbonIcon");
 
 			// Add delete button to icon setting
-			this.addDeleteButton(iconSetting, (id) => this.plugin.removeRibbonIcon(id), iconConfig);
+			iconSetting.addButton((button) => {
+				button
+					.setButtonText("Delete")
+					.setClass("mod-warning")
+					.onClick(async () => {
+						await this.plugin.removeRibbonIcon(iconConfig.id);
+						this.display();
+					});
+			});
 		});
 	}
 
 	private setupStatusBarSetting() {
 		this.containerEl.createEl("h2", { text: "Status bar icons" });
 
-		// Add "Add New Icon" button at the top
+		// Add button to add new Status Bar icon
 		new Setting(this.containerEl).setName(`Add new status bar icon`).addButton((button) => {
 			button.setButtonText("+").onClick(async () => {
 				await this.plugin.addNewStatusBarIcon();
@@ -133,28 +160,33 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 
 		// Display settings for each icon
 		this.plugin.settings.StatusBarIcons.forEach((iconConfig) => {
-			const iconSetting = new Setting(this.containerEl).setName(`Status bar icon`).setDesc("Assign an image to display when hovering the status bar icon");
-
-			// Add image path input
-			this.addImagePathInput(iconSetting, (id, imagePath) => this.plugin.updateStatusBarIconImagePath(id, imagePath), iconConfig);
+			const iconSetting = new Setting(this.containerEl)
+				.setName(`Status bar icon`)
+				.setDesc("Assign an image to display when hovering the status bar icon")
+				.addSearch((text) => {
+					new FileSuggester(this.app, text.inputEl);
+					text
+						.setPlaceholder("images/example.png")
+						.setValue(iconConfig.imagePath)
+						.onChange(async (value) => {
+							await this.plugin.updateStatusBarIconImagePath(iconConfig.id, value);
+						});
+				});
 
 			// Add icon picker button
 			this.createIconPicker(iconSetting, (id, iconId) => this.plugin.updateStatusBarIcon(id, iconId), iconConfig, "statusBarIcon");
 
 			// Add delete button to icon setting
-			this.addDeleteButton(iconSetting, (id) => this.plugin.removeStatusBarIcon(id), iconConfig);
+			iconSetting.addButton((button) => {
+				button
+					.setButtonText("Delete")
+					.setClass("mod-warning")
+					.onClick(async () => {
+						await this.plugin.removeStatusBarIcon(iconConfig.id);
+						this.display();
+					});
+			});
 		});
-	}
-
-	private addImagePathInput(iconSetting: Setting, updateImagePath: (id: string, imagePath: string) => Promise<boolean>, iconConfig: any) {
-		iconSetting.addText((text) =>
-			text
-				.setPlaceholder("images/example.png")
-				.setValue(iconConfig.imagePath)
-				.onChange(async (value) => {
-					await updateImagePath(iconConfig.id, value);
-				}),
-		);
 	}
 
 	private createIconPicker(iconSetting: Setting, updateIcon: (id: string, iconId: string) => Promise<boolean>, iconConfig: any, iconTypeKey: string) {
@@ -237,18 +269,6 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			if (!iconButton.contains(e.target as Node) && !dropdownContainer.contains(e.target as Node)) {
 				dropdownContainer.classList.remove("is-visible");
 			}
-		});
-	}
-
-	private addDeleteButton(iconSetting: Setting, removeIcon: (id: string) => Promise<void>, iconConfig: any) {
-		iconSetting.addButton((button) => {
-			button
-				.setButtonText("Delete")
-				.setClass("mod-warning")
-				.onClick(async () => {
-					await removeIcon(iconConfig.id);
-					this.display();
-				});
 		});
 	}
 }

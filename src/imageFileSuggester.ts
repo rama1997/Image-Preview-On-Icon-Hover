@@ -1,6 +1,6 @@
 import { App, TAbstractFile, TFile, AbstractInputSuggest } from "obsidian";
 
-export class FileSuggester extends AbstractInputSuggest<TFile> {
+export class ImageFileSuggester extends AbstractInputSuggest<TFile> {
 	private inputEl: HTMLInputElement;
 
 	constructor(app: App, inputEl: HTMLInputElement) {

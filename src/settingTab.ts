@@ -1,6 +1,6 @@
 import { App, Setting, setIcon, getIconIds, Notice, PluginSettingTab } from "obsidian";
 import ImagePreviewOnIconHoverPlugin from "./main";
-import { FileSuggester } from "./FileSuggester";
+import { ImageFileSuggester } from "./imageFileSuggester";
 
 export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	private plugin: ImagePreviewOnIconHoverPlugin;
@@ -35,7 +35,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			.setName("Left sidebar toggle icon")
 			.setDesc("Assign an image to display when hovering over the left sidebar toggle icon")
 			.addSearch((text) => {
-				new FileSuggester(this.app, text.inputEl);
+				new ImageFileSuggester(this.app, text.inputEl);
 				text
 					.setPlaceholder("images/example.png")
 					.setValue(this.plugin.settings.CoreButtonsImage.leftSidebarToggleImagePath)
@@ -50,7 +50,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			.setName("Right sidebar toggle icon")
 			.setDesc("Assign an image to display when hovering over the righ sidebar toggle icon")
 			.addSearch((text) => {
-				new FileSuggester(this.app, text.inputEl);
+				new ImageFileSuggester(this.app, text.inputEl);
 				text
 					.setPlaceholder("images/example.png")
 					.setValue(this.plugin.settings.CoreButtonsImage.rightSidebarToggleImagePath)
@@ -65,7 +65,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			.setName("Vault switcher")
 			.setDesc("Assign an image to display when hovering over the vault switcher")
 			.addSearch((text) => {
-				new FileSuggester(this.app, text.inputEl);
+				new ImageFileSuggester(this.app, text.inputEl);
 				text
 					.setPlaceholder("images/example.png")
 					.setValue(this.plugin.settings.CoreButtonsImage.vaultSwitcherImagePath)
@@ -80,7 +80,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			.setName("Help icon")
 			.setDesc("Assign an image to display when hovering over the help icon")
 			.addSearch((text) => {
-				new FileSuggester(this.app, text.inputEl);
+				new ImageFileSuggester(this.app, text.inputEl);
 				text
 					.setPlaceholder("images/example.png")
 					.setValue(this.plugin.settings.CoreButtonsImage.helpIconImagePath)
@@ -95,7 +95,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 			.setName("Setting icon")
 			.setDesc("Assign an image to display when hovering over the setting icon")
 			.addSearch((text) => {
-				new FileSuggester(this.app, text.inputEl);
+				new ImageFileSuggester(this.app, text.inputEl);
 				text
 					.setPlaceholder("images/example.png")
 					.setValue(this.plugin.settings.CoreButtonsImage.settingIconImagePath)
@@ -122,7 +122,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 				.setName(`Ribbon bar icon`)
 				.setDesc("Assign an image to display when hovering the ribbon icon")
 				.addSearch((text) => {
-					new FileSuggester(this.app, text.inputEl);
+					new ImageFileSuggester(this.app, text.inputEl);
 					text
 						.setPlaceholder("images/example.png")
 						.setValue(iconConfig.imagePath)
@@ -164,7 +164,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 				.setName(`Status bar icon`)
 				.setDesc("Assign an image to display when hovering the status bar icon")
 				.addSearch((text) => {
-					new FileSuggester(this.app, text.inputEl);
+					new ImageFileSuggester(this.app, text.inputEl);
 					text
 						.setPlaceholder("images/example.png")
 						.setValue(iconConfig.imagePath)

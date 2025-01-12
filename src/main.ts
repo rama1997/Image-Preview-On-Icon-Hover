@@ -21,6 +21,7 @@ export default class ImagePreviewOnIconHoverPlugin extends Plugin {
 		this.statusBarManager = new StatusBarManager(this.app, this, this.pluginId);
 		this.coreButtonsManager = new CoreButtonsManager(this.app, this);
 
+		// Setup core buttons
 		this.setupCoreButtonsImagePreview();
 
 		// Setup ribbon and status bar icons
@@ -48,35 +49,35 @@ export default class ImagePreviewOnIconHoverPlugin extends Plugin {
 	async updateVaultSwitcherImagePath(imagePath: string): Promise<boolean> {
 		this.settings.CoreButtonsImage.vaultSwitcherImagePath = imagePath;
 		await this.savePluginSettings();
-		this.setupCoreButtonsImagePreview();
+		this.coreButtonsManager.setupVaultSwitcherImagePreview(imagePath);
 		return true;
 	}
 
 	async updateHelpIconImagePath(imagePath: string): Promise<boolean> {
 		this.settings.CoreButtonsImage.helpIconImagePath = imagePath;
 		await this.savePluginSettings();
-		this.setupCoreButtonsImagePreview();
+		this.coreButtonsManager.setupHelpIconImagePreview(imagePath);
 		return true;
 	}
 
 	async updateSettingIconImagePath(imagePath: string): Promise<boolean> {
 		this.settings.CoreButtonsImage.settingIconImagePath = imagePath;
 		await this.savePluginSettings();
-		this.setupCoreButtonsImagePreview();
+		this.coreButtonsManager.setupSettingIconImagePreview(imagePath);
 		return true;
 	}
 
 	async updateLeftSidebarToggleImagePath(imagePath: string): Promise<boolean> {
 		this.settings.CoreButtonsImage.leftSidebarToggleImagePath = imagePath;
 		await this.savePluginSettings();
-		this.setupCoreButtonsImagePreview();
+		this.coreButtonsManager.setupLeftSidebarToggleImagePreview(imagePath);
 		return true;
 	}
 
 	async updateRightSidebarToggleImagePath(imagePath: string): Promise<boolean> {
 		this.settings.CoreButtonsImage.rightSidebarToggleImagePath = imagePath;
 		await this.savePluginSettings();
-		this.setupCoreButtonsImagePreview();
+		this.coreButtonsManager.setupRightSidebarToggleImagePreview(imagePath);
 		return true;
 	}
 

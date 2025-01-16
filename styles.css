@@ -110,7 +110,7 @@
 	height: 16px;
 }
 
-.setting-item-control[data-image-preview-plugin] {
+.setting-item-control[data-plugin="image-preview-on-icon-hover"] {
 	display: flex;
 	align-items: center;
 	gap: 8px;

@@ -191,7 +191,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 
 	private createIconPicker(iconSetting: Setting, updateIcon: (id: string, iconId: string) => Promise<boolean>, iconConfig: any, iconTypeKey: string) {
 		// Add data attribute for styling
-		iconSetting.controlEl.setAttribute("data-image-preview-plugin", "");
+		iconSetting.controlEl.setAttribute("data-plugin", "image-preview-on-icon-hover");
 
 		// Create the icon button
 		const iconButton = iconSetting.controlEl.createEl("button", {

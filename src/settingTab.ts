@@ -21,7 +21,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	}
 
 	private setupCoreButtonsSetting() {
-		this.containerEl.createEl("h2", { text: "Obsidian icons" });
+		new Setting(this.containerEl).setName("Obsidian icons").setHeading();
 
 		this.setupLeftSidebarToggleSetting();
 		this.setupRightSidebarToggleSetting();
@@ -106,7 +106,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	}
 
 	private setupRibbonIconSetting() {
-		this.containerEl.createEl("h2", { text: "Ribbon bar icons" });
+		new Setting(this.containerEl).setName("Ribbon icons").setHeading();
 
 		// Add button to add new Ribbon Bar icon
 		new Setting(this.containerEl).setName(`Add new ribbon bar icon`).addButton((button) => {
@@ -148,7 +148,7 @@ export class ImagePreviewOnIconHoverSettingTab extends PluginSettingTab {
 	}
 
 	private setupStatusBarSetting() {
-		this.containerEl.createEl("h2", { text: "Status bar icons" });
+		new Setting(this.containerEl).setName("Status Bar icons").setHeading();
 
 		// Add button to add new Status Bar icon
 		new Setting(this.containerEl).setName(`Add new status bar icon`).addButton((button) => {

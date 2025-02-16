@@ -1,6 +1,6 @@
 # Image Preview on Icon Hover
 
-Enhance your Obsidian experience by adding custom image previews when hovering over various icons in the user interface!
+Enhance your Obsidian experience by adding image popups when hovering over various icons in the user interface!
 
 <img src="assets/example.gif" alt="Descriptive Alt Text" width="600">
 

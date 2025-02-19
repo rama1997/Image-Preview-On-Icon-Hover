@@ -1,6 +1,6 @@
 import { App, Plugin, Notice } from "obsidian";
 import { ImagePreviewManager } from "./imagePreviewManager";
-import { RibbonBarIconConfig } from "./types";
+import { RibbonBarIconConfig } from "../types";
 
 export class RibbonBarManager {
 	private app: App;

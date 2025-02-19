@@ -1,6 +1,6 @@
 import { App, Plugin, setIcon, Notice } from "obsidian";
 import { ImagePreviewManager } from "./imagePreviewManager";
-import { StatusBarIconConfig } from "./types";
+import { StatusBarIconConfig } from "../types";
 
 export class StatusBarManager {
 	private app: App;

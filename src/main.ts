@@ -1,7 +1,7 @@
 import { Plugin } from "obsidian";
-import { RibbonBarManager } from "./ribbonBarManager";
-import { StatusBarManager } from "./statusBarManager";
-import { CoreButtonsManager } from "./coreButtonsManager";
+import { RibbonBarManager } from "./managers/ribbonBarManager";
+import { StatusBarManager } from "./managers/statusBarManager";
+import { CoreButtonsManager } from "./managers/coreButtonsManager";
 import { ImagePreviewOnIconHoverSettingTab } from "./settingTab";
 import { DEFAULT_SETTINGS } from "./constants";
 import { ImagePreviewOnIconHoverSettings } from "./types";

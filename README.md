@@ -52,7 +52,7 @@ Enhance your Obsidian experience by adding image popups when hovering over vario
 
 1. In the plugin settings, you can:
    - Add new icons with the "+" button
-   - Select custom icons
+   - Select icons
    - Choose unique images for each icon
    - Delete existing icons
 
@@ -68,12 +68,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you encounter any issues or have suggestions for improvements, please open an issue on the GitHub repository.
 
-Found a bug? Please open an issue on our GitHub repository with:
-
-- Obsidian version
-- Plugin version
-- Detailed description of the issue
-
----
-
-**Enjoy customizing your Obsidian icons!** 🖼️
